@@ -13,6 +13,7 @@ public class AI : MonoBehaviour
     public float speed;
     
     private Transform target;
+    private bool dead;
 
     private void Awake()
     {
@@ -22,7 +23,11 @@ public class AI : MonoBehaviour
     
     void Update()
     {
-        Move();
+        if(!dead)
+        {
+            Move();
+        }
+        
     }
 
     void Move()
@@ -32,6 +37,7 @@ public class AI : MonoBehaviour
 
     public void Die()
     {
+        dead = true;
         if(isHuman)
         {
             GameManager.instance.MinusScore();
